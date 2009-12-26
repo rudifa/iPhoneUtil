@@ -44,14 +44,14 @@ void doLog(int level, id formatstring,...)
 }
 
 - (void) logViewTreeFrom:(id)view toMaxLevel:(int)maxLevel {
-    [self explode:view level:0 maxLevel:0];
+    [self explode:view level:0 maxLevel:maxLevel];
 }
 
 - (void) logAppViewTree {
     [self logViewTreeFrom:[[UIApplication sharedApplication] keyWindow]];
 }
 
-- (void) logAppViewTreeToLevel:(int)maxLevel {
+- (void) logAppViewTreeToMaxLevel:(int)maxLevel {
     [self logViewTreeFrom:[[UIApplication sharedApplication] keyWindow] toMaxLevel:maxLevel];
 }
 

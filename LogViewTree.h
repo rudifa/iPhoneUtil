@@ -22,11 +22,37 @@
 
  // 3. add to one of methods (e.g. viewDidAppear) one of the following invocations :
 
- [[[[LogViewTree alloc] init] autorelease] logAppViewTree];
- [[[[LogViewTree alloc] init] autorelease] logAppViewTreeToLevel:4];
  [[[[LogViewTree alloc] init] autorelease] logViewTreeFrom:aView];
- [[[[LogViewTree alloc] init] autorelease] logViewTreeFrom:aView toMaxLevel:4];
+ [[[[LogViewTree alloc] init] autorelease] logViewTreeFrom:aView toMaxLevel:3];
+ [[[[LogViewTree alloc] init] autorelease] logAppViewTree];
+ [[[[LogViewTree alloc] init] autorelease] logAppViewTreeToMaxLevel:3];
 
+ // The first two methods dump the tree starting from the specified view.
+ // The second two methods dump the tree from the application's key window.
+ 
+ // The 2-line information for each view contains the view's class name, the address and the frame.
+ 
+ Sample output :
+ 
+ UIWindow    p=0x3812e10
+ {{0, 0}, {320, 480}}
+ .    UIView    p=0x381cd80
+ .    {{0, 20}, {320, 460}}
+ .    .    UILabel    p=0x381cde0
+ .    .    {{10, 50}, {300, 30}}
+ .    .    UIButton    p=0x381ce40
+ .    .    {{100, 150}, {120, 30}}
+ .    .    .    UIButtonLabel    p=0x381d260
+ .    .    .    {{39, 4}, {42, 22}}
+ .    .    UIButton    p=0x381cf40
+ .    .    {{100, 200}, {120, 30}}
+ .    .    .    UIButtonLabel    p=0x381b990
+ .    .    .    {{43, 4}, {33, 22}}
+ .    .    UIButton    p=0x381d0d0
+ .    .    {{100, 250}, {120, 30}}
+ .    .    .    UIButtonLabel    p=0x381b920
+ .    .    .    {{8, 4}, {104, 22}}
+ 
 
  *****/
 
@@ -38,7 +64,7 @@
 -(void) logViewTreeFrom:(id)view;
 -(void) logViewTreeFrom:(id)view toMaxLevel:(int)maxLevel;
 -(void) logAppViewTree;
--(void) logAppViewTreeToLevel:(int)maxLevel;
+-(void) logAppViewTreeToMaxLevel:(int)maxLevel;
 
 @end
 
